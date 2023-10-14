@@ -1,2 +1,9 @@
 # Snake_game
-OOP mini project
+OOP Mini Project
+
+
+
+
+
+
+Saanp paal ke rakhe hai
