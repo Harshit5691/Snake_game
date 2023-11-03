@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle; // Import Rectangle from javafx.scene.shape
 
+
 public class Draft1 extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -21,17 +22,36 @@ public class Draft1 extends Application {
         VBox root = new VBox(); // Changed to VBox for vertical stacking
         Scene primaryScene = new Scene(new StackPane(root), 700, 700);
 
-        String css = "-fx-background-color: lightblue;";
+
+        String backgroundImage = "mainmenu.jpg";
+        String css = "-fx-background-image: url('" + backgroundImage + "'); -fx-background-size: cover;";
         primaryScene.getRoot().setStyle(css);
 
+        
         stage.setTitle("Slithering Serpent");
-        Image icon = new Image("icon.jpg");
+        Image icon = new Image("icon1.jpg");
         stage.getIcons().add(icon);
 
-        ImageView titleImage = new ImageView(new Image("title.png"));
+       /* ImageView snakeImage = new ImageView(new Image("snake1.jpg"));
+        snakeImage.setFitWidth(100); // Set the width as needed
+        snakeImage.setPreserveRatio(true);*/
+
+        /*ImageView snakeImage2 = new ImageView(new Image("snake2.png"));
+        snakeImage2.setFitWidth(100); // Set the width as needed
+        snakeImage2.setPreserveRatio(true);*/
+
+        ImageView titleImage = new ImageView(new Image("title2.png"));
+
 
         Button play = new Button("Play");
-        play.setOnAction(e -> System.out.println("Play button clicked!"));
+
+        play.setOnAction(e -> {
+            System.out.println("Clicked play!");
+            HelloApplication helloApp = new HelloApplication();
+            Stage helloStage = new Stage();
+            helloApp.start(helloStage);
+
+        });
         play.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20; -fx-background-radius: 50;");
 
         Button scores = new Button("High Scores");
@@ -49,7 +69,8 @@ public class Draft1 extends Application {
         exit.setOnAction(e -> stage.close());
         exit.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20; -fx-background-radius: 50;");
 
-        root.getChildren().addAll(titleImage, play, scores, credits, exit);
+        root.getChildren().addAll( titleImage, play, scores, credits, exit);
+    //    VBox.setMargin(snakeImage2, new Insets(100, 10, 10, 10)); // Adjust margins for snake image
         VBox.setMargin(titleImage, new Insets(10, 0, 10, 0)); // Adjust margins for image
         VBox.setMargin(play, new Insets(10, 0, 10, 0)); // Adjust margins for Play button
         VBox.setMargin(scores, new Insets(10, 0, 10, 0)); // Adjust margins for High Scores button
