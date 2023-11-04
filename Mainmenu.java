@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle; // Import Rectangle from javafx.scene.shape
 
 
-public class Draft1 extends Application {
+public class Mainmenu extends Application {
     public static void main(String[] args) {
         launch(args);
     }
@@ -23,33 +23,26 @@ public class Draft1 extends Application {
         Scene primaryScene = new Scene(new StackPane(root), 700, 700);
 
 
-        String backgroundImage = "mainmenu.jpg";
+        String backgroundImage = "images/mainmenu.jpg";
         String css = "-fx-background-image: url('" + backgroundImage + "'); -fx-background-size: cover;";
         primaryScene.getRoot().setStyle(css);
 
         
         stage.setTitle("Slithering Serpent");
-        Image icon = new Image("icon1.jpg");
+        Image icon = new Image("images/icon1.jpg");
         stage.getIcons().add(icon);
 
-       /* ImageView snakeImage = new ImageView(new Image("snake1.jpg"));
-        snakeImage.setFitWidth(100); // Set the width as needed
-        snakeImage.setPreserveRatio(true);*/
 
-        /*ImageView snakeImage2 = new ImageView(new Image("snake2.png"));
-        snakeImage2.setFitWidth(100); // Set the width as needed
-        snakeImage2.setPreserveRatio(true);*/
-
-        ImageView titleImage = new ImageView(new Image("title2.png"));
+        ImageView titleImage = new ImageView(new Image("images/title2.png"));
 
 
         Button play = new Button("Play");
 
         play.setOnAction(e -> {
             System.out.println("Clicked play!");
-            HelloApplication helloApp = new HelloApplication();
-            Stage helloStage = new Stage();
-            helloApp.start(helloStage);
+            Playscene  playApp = new Playscene();
+            Stage playStage = new Stage();
+            playApp.start(playStage);
 
         });
         play.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20; -fx-background-radius: 50;");
@@ -98,7 +91,7 @@ public class Draft1 extends Application {
         creditsScene.getRoot().setStyle(woodyCss); // Set the woody background with a black border
 
         // Load the image for credits
-        Image creditsImage = new Image("credits.png");
+        Image creditsImage = new Image("images/credits.png");
         ImageView creditsImageView = new ImageView(creditsImage);
 
         // Create a rectangle to act as a border around the image

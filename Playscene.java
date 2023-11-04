@@ -19,22 +19,22 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HelloApplication extends Application {
+public class Playscene extends Application {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 800;
     private static final int ROWS = 20;
     private static final int COLOUMNS = ROWS;
     private static final int SQUARE_SIZE = WIDTH/ROWS;
-    private static final String[] FOODS_IMAGE = new String[]{"ic_apple.png",
-            "ic_berry.png",
-            "ic_cherry.png",
-            "ic_coconut_.png",
-            "ic_orange.png",
-            "ic_peach.png",
-            "ic_pomegranate.png",
-            "ic_tomato.png",
-            "ic_watermelon.png"};
+    private static final String[] FOODS_IMAGE = new String[]{"images/ic_apple.png",
+            "images/ic_berry.png",
+            "images/ic_cherry.png",
+            "images/ic_coconut_.png",
+            "images/ic_orange.png",
+            "images/ic_peach.png",
+            "images/ic_pomegranate.png",
+            "images/ic_tomato.png",
+            "images/ic_watermelon.png"};
     private static final int RIGHT = 0;
     private static final int LEFT = 1;
     private static final int UP = 2;
@@ -63,6 +63,7 @@ public class HelloApplication extends Application {
         root.getChildren().add(canvas);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
         //stage setup
 
@@ -113,6 +114,7 @@ public class HelloApplication extends Application {
             gc.setFont(new Font("Arial",70));
             gc.fillText("GAME OVER",WIDTH/3.5, (double) HEIGHT /2);
             timeline.stop();
+            //close();
             return;
         }
         //game board background
@@ -239,8 +241,4 @@ public class HelloApplication extends Application {
         gc.setFont(new Font("Arial",35));
         gc.fillText("Score; "+score,10,35);
     }
-    /*public static void main(String[] args) {
-
-        launch(args);
-    }*/
 }
