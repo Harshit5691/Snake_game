@@ -48,10 +48,12 @@ public class Mainmenu extends Application {
         play.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20; -fx-background-radius: 50;");
 
         Button scores = new Button("High Scores");
-        scores.setOnAction(e -> {
-            System.out.println("Display high scores!");
-            //readScores();
-        });
+	scores.setOnAction(e -> {
+    		leaderboard leaderboardApp = new leaderboard();
+    		Stage leaderboardStage = new Stage();
+    		leaderboardApp.start(leaderboardStage);
+	});
+
         scores.setStyle("-fx-background-color: #008CBA; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20; -fx-background-radius: 50;");
 
         Button credits = new Button("Credits");

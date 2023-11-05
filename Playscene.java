@@ -15,12 +15,18 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.text.Font;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.control.TextInputDialog;
+import java.util.Optional;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Playscene extends Application {
 
+
+    private boolean gameOverTriggered = false;  
     private static final int WIDTH = 800;
     private static final int HEIGHT = 800;
     private static final int ROWS = 20;
@@ -65,8 +71,14 @@ public class Playscene extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
-        //stage setup
-
+        
+        /*while(true){
+           if(gameOverTriggered){
+               primaryStage.close();
+           }
+        
+        }
+        */
 
         gc = canvas.getGraphicsContext2D();
 
@@ -104,7 +116,9 @@ public class Playscene extends Application {
         timeline = new Timeline(new KeyFrame(Duration.millis(currentSpeed),e->run(gc)));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+        
     }
+    
 
     public void run(GraphicsContext gc)
     {
@@ -112,9 +126,11 @@ public class Playscene extends Application {
         {
             gc.setFill(Color.RED);
             gc.setFont(new Font("Arial",70));
-            gc.fillText("GAME OVER",WIDTH/3.5, (double) HEIGHT /2);
+            gc.fillText("GAME OVER",WIDTH/4, (double) HEIGHT /2);
+            NameInputDialog inp = new NameInputDialog();
+            Stage s = new Stage();
+            inp.start(s,score);
             timeline.stop();
-            //close();
             return;
         }
         //game board background
@@ -239,6 +255,6 @@ public class Playscene extends Application {
     {
         gc.setFill(Color.WHITE);
         gc.setFont(new Font("Arial",35));
-        gc.fillText("Score; "+score,10,35);
+        gc.fillText("Score: "+score,10,35);
     }
 }

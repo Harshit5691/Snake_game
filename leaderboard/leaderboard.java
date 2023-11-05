@@ -5,29 +5,11 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class leaderboard{
-    public static void main(String[] args) {
+    public void readScores() {
         String csvFile = "yourfile.csv";
         String[] data = {"T,80", "H,29", "S,3"};
         int nc = 2;
         String[][] sorted =new String[1000][nc];
-
-        try {
-            FileWriter fileWriter = new FileWriter(csvFile, true);
-            BufferedWriter writer = new BufferedWriter(fileWriter);
-            for (String value : data) {
-                writer.write(value);
-                writer.write(",");
-                writer.newLine();
-            }
-
-            writer.close();
-            fileWriter.close();
-
-            System.out.println("Data added to the CSV file successfully.\n\n\n\n");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         
         try{
 	    BufferedReader reader = new BufferedReader(new FileReader("yourfile.csv"));
@@ -56,6 +38,25 @@ public class leaderboard{
 	} catch (IOException e){
 		e.printStackTrace();
 	}
+    }
+    public void writeScores(String [] data){
+    try {
+            FileWriter fileWriter = new FileWriter(csvFile, true);
+            BufferedWriter writer = new BufferedWriter(fileWriter);
+            for (String value : data) {
+                writer.write(value);
+                writer.write(",");
+                writer.newLine();
+            }
+
+            writer.close();
+            fileWriter.close();
+
+            System.out.println("Data added to the CSV file successfully.\n\n\n\n");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
