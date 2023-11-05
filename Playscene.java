@@ -127,9 +127,6 @@ public class Playscene extends Application {
             gc.setFill(Color.RED);
             gc.setFont(new Font("Arial",70));
             gc.fillText("GAME OVER",WIDTH/4, (double) HEIGHT /2);
-            NameInputDialog inp = new NameInputDialog();
-            Stage s = new Stage();
-            inp.start(s,score);
             timeline.stop();
             return;
         }

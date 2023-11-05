@@ -26,3 +26,8 @@ public class NameInputDialog extends Application {
     }
 }
 
+
+
+NameInputDialog inp = new NameInputDialog();
+Stage s= new Stage();
+
