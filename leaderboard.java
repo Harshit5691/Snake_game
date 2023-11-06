@@ -18,7 +18,7 @@ import java.io.BufferedReader;
 
 public class leaderboard extends Application {
     String highScores = "";
-    String csvFile = "yourfile.csv";
+    String csvFile = "scores.csv";
     int nc = 2;
     String[][] sorted = new String[1000][nc];
 
@@ -33,16 +33,19 @@ public class leaderboard extends Application {
         nameLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         nameLabel.setStyle("-fx-text-fill: black;");
         GridPane.setConstraints(nameLabel, 0, 0);
+        GridPane.setMargin(nameLabel, new Insets(0, 10, 0, 10));
 
         Label scoreLabel = new Label("Score");
         scoreLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         scoreLabel.setStyle("-fx-text-fill: black;");
-        GridPane.setConstraints(scoreLabel, 100, 0);
+        GridPane.setConstraints(scoreLabel, 1, 0);
+        GridPane.setMargin(scoreLabel, new Insets(0, 10, 0, 20));
 
         Label highScoresLabel = new Label();
         highScoresLabel.setText(readScores());
         highScoresLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        GridPane.setConstraints(highScoresLabel, 0, 1, 2, 1);
+        GridPane.setConstraints(highScoresLabel, 0, 1);
+        GridPane.setColumnSpan(highScoresLabel,2);
         GridPane.setMargin(highScoresLabel, new Insets(20, 0, 0, 0));
 
         root.getChildren().addAll(nameLabel, scoreLabel, highScoresLabel);
@@ -55,12 +58,12 @@ public class leaderboard extends Application {
     }
     public String readScores() {
         String highScores = "";
-        String csvFile = "yourfile.csv";
+        String csvFile = "scores.csv";
         int nc = 2;
         String[][] sorted = new String[1000][nc];
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("yourfile.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader("scores.csv"));
             String line;
             int row = 0;
             while ((line = reader.readLine()) != null) {
@@ -79,7 +82,7 @@ public class leaderboard extends Application {
                     }
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 2; j++)
-                    highScores += sorted[i][j] + " ";
+                    highScores += sorted[i][j] + "       ";
                 highScores += "\n";
             }
             reader.close();
@@ -88,8 +91,8 @@ public class leaderboard extends Application {
         }
         return highScores;
     }
-
-    public void writeScores(String data) {
+    
+        public void writeScores(String data) {
         try {
             FileWriter fileWriter = new FileWriter(csvFile, true);
             BufferedWriter writer = new BufferedWriter(fileWriter);
@@ -98,20 +101,22 @@ public class leaderboard extends Application {
             writer.write(",");
             writer.newLine();
             
-            /*for (String value : data) {
-                writer.write(value);
-                writer.write(",");
-                writer.newLine();
-            }*/
-
             writer.close();
             fileWriter.close();
 
-            System.out.println("Data added to the CSV file successfully.\n\n\n\n");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }
+
+
+
+
+
+
+
 

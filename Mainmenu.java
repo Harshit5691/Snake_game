@@ -10,7 +10,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle; // Import Rectangle from javafx.scene.shape
+import javafx.scene.shape.Rectangle;
+
+
+import java.util.Optional;
 
 
 public class Mainmenu extends Application {
@@ -39,7 +42,6 @@ public class Mainmenu extends Application {
         Button play = new Button("Play");
 
         play.setOnAction(e -> {
-            System.out.println("Clicked play!");
             Playscene  playApp = new Playscene();
             Stage playStage = new Stage();
             playApp.start(playStage);
@@ -65,7 +67,6 @@ public class Mainmenu extends Application {
         exit.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20; -fx-background-radius: 50;");
 
         root.getChildren().addAll( titleImage, play, scores, credits, exit);
-    //    VBox.setMargin(snakeImage2, new Insets(100, 10, 10, 10)); // Adjust margins for snake image
         VBox.setMargin(titleImage, new Insets(10, 0, 10, 0)); // Adjust margins for image
         VBox.setMargin(play, new Insets(10, 0, 10, 0)); // Adjust margins for Play button
         VBox.setMargin(scores, new Insets(10, 0, 10, 0)); // Adjust margins for High Scores button
@@ -89,7 +90,7 @@ public class Mainmenu extends Application {
 
         creditsStage.setTitle("Credits");
 
-        String woodyCss = "-fx-background-image: url('wood.jpg'); -fx-background-size: cover;";
+        String woodyCss = "-fx-background-image: url('images/wood.jpg'); -fx-background-size: cover;";
         creditsScene.getRoot().setStyle(woodyCss); // Set the woody background with a black border
 
         // Load the image for credits
@@ -111,4 +112,5 @@ public class Mainmenu extends Application {
         creditsStage.setResizable(false);
         creditsStage.show();
     }
+    
 }

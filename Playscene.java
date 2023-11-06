@@ -54,7 +54,7 @@ public class Playscene extends Application {
     private int foodY;
     private Boolean gameOver = false;
     private int currentDirection;
-    private int score = 0;
+    public int score = 0;
     private Timeline timeline;
     private int currentSpeed = 150;
     private final int speedIncrease = 5;
@@ -72,13 +72,7 @@ public class Playscene extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
         
-        /*while(true){
-           if(gameOverTriggered){
-               primaryStage.close();
-           }
         
-        }
-        */
 
         gc = canvas.getGraphicsContext2D();
 
@@ -117,6 +111,23 @@ public class Playscene extends Application {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
         
+        
+        primaryStage.setOnCloseRequest(e -> {
+            e.consume(); // Consume the event to prevent automatic closing
+
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Saving score");
+            dialog.setHeaderText("Please enter your name:");
+            dialog.setContentText("Name:");
+
+            dialog.showAndWait().ifPresent(name -> {
+                
+                name=name+","+Integer.toString(score);
+                leaderboard l1= new leaderboard();
+                l1.writeScores(name);
+                primaryStage.close(); // Close the stage after getting the name
+            });
+        });
     }
     
 
@@ -125,7 +136,7 @@ public class Playscene extends Application {
         if(gameOver)
         {
             gc.setFill(Color.RED);
-            gc.setFont(new Font("Arial",70));
+            gc.setFont(new Font("Times New Roman",70));
             gc.fillText("GAME OVER",WIDTH/4, (double) HEIGHT /2);
             timeline.stop();
             return;
